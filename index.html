@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hello, pricing!</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px 16px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
+      color: #1f2933;
+      background: #f5f7fa;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    .author {
+      margin: 0;
+      color: #52606d;
+    }
+
+    .intro {
+      margin: 16px auto 0;
+      max-width: 480px;
+      color: #52606d;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 720px) {
+      .plans {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .plan {
+      background: #ffffff;
+      border: 1px solid #e4e7eb;
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .plan.featured {
+      border: 2px solid #2563eb;
+    }
+
+    .plan h2 {
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: #2563eb;
+      border-radius: 999px;
+      vertical-align: middle;
+    }
+
+    .price {
+      margin: 0 0 16px;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #52606d;
+    }
+
+    .plan ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .plan li {
+      padding: 8px 0;
+      border-top: 1px solid #e4e7eb;
+    }
+
+    .plan li::before {
+      content: "✓ ";
+      color: #2563eb;
+      font-weight: 700;
+    }
+
+    footer {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.875rem;
+      color: #7b8794;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Hello, pricing!</h1>
+      <p class="author">Augustin Nguyen</p>
+      <p class="intro">Plans for <strong>TaskNest</strong>, a fictional to-do and planning app.</p>
+    </header>
+
+    <section class="plans" aria-label="Pricing plans">
+      <article class="plan">
+        <h2>Free</h2>
+        <p class="price">€0 <span>/ month</span></p>
+        <ul>
+          <li>Up to 3 projects</li>
+          <li>Basic task lists</li>
+          <li>Mobile app access</li>
+        </ul>
+      </article>
+
+      <article class="plan featured">
+        <h2>Basic <span class="badge">Popular</span></h2>
+        <p class="price">€5 <span>/ month</span></p>
+        <ul>
+          <li>Unlimited projects</li>
+          <li>Reminders and due dates</li>
+          <li>Email support</li>
+        </ul>
+      </article>
+
+      <article class="plan">
+        <h2>Pro</h2>
+        <p class="price">€12 <span>/ month</span></p>
+        <ul>
+          <li>Everything in Basic</li>
+          <li>Team sharing (up to 10 users)</li>
+          <li>Priority support</li>
+        </ul>
+      </article>
+    </section>
+
+    <footer>
+      TaskNest is a fictional app made for a class project.
+    </footer>
+  </main>
+</body>
+</html>
