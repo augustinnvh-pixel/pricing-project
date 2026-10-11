@@ -1,169 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello, pricing!</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GameKey Balkan – Authorised PC game keys for shops</title>
+<meta name="description" content="Authorised activation keys for PC games, sold to electronics shops and web shops in Croatia, Serbia, Bosnia and Herzegovina, Montenegro and North Macedonia.">
+<style>
+  :root {
+    --brand: #0F4C5C;
+    --brand-dark: #0a3641;
+    --brand-light: #e7f0f2;
+    --text: #1f2a2e;
+    --muted: #4a5a60;
+    --border: #d9e2e5;
+    --bg: #ffffff;
+    --bg-alt: #f6f9fa;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    overflow-wrap: break-word;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  h1, h2, h3 { color: var(--brand); line-height: 1.25; margin: 0 0 16px; }
+  h1 { font-size: clamp(30px, 6vw, 46px); }
+  h2 { font-size: clamp(26px, 4.5vw, 34px); }
+  h3 { font-size: 20px; }
+  p { margin: 0 0 16px; }
+  a { color: var(--brand); }
+  a:focus-visible, .btn:focus-visible { outline: 3px solid #f2b134; outline-offset: 2px; }
 
-    body {
-      margin: 0;
-      padding: 32px 16px;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.5;
-      color: #1f2933;
-      background: #f5f7fa;
-    }
+  /* Header */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .site-header .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brand);
+    text-decoration: none;
+  }
+  .nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0 4px;
+  }
+  .nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 10px;
+    font-size: 16px;
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 6px;
+  }
+  .nav a:hover { background: var(--brand-light); color: var(--brand); }
 
-    main {
-      max-width: 960px;
-      margin: 0 auto;
-    }
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 28px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--brand);
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .btn:hover { background: var(--brand-dark); }
 
-    header {
-      text-align: center;
-      margin-bottom: 32px;
-    }
+  /* Sections */
+  section { padding: 72px 0; }
+  section:nth-of-type(even) { background: var(--bg-alt); }
+  .section-intro { color: var(--muted); max-width: 680px; margin-bottom: 36px; }
 
-    h1 {
-      margin: 0 0 8px;
-      font-size: 2rem;
-    }
+  /* Hero */
+  .hero { padding: 96px 0 88px; background: var(--brand-light); }
+  .hero p { font-size: 19px; color: var(--muted); max-width: 680px; margin-bottom: 28px; }
 
-    .author {
-      margin: 0;
-      color: #52606d;
-    }
+  /* Cards */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 24px;
+  }
+  .card p { margin: 0; color: var(--muted); }
 
-    .intro {
-      margin: 16px auto 0;
-      max-width: 480px;
-      color: #52606d;
-    }
+  /* Steps */
+  .steps { counter-reset: step; list-style: none; padding: 0; margin: 0; }
+  .steps li { position: relative; }
+  .steps li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 24px;
+    top: 26px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .steps .card { padding-left: 72px; }
 
-    .plans {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
+  /* FAQ */
+  .faq { max-width: 780px; }
+  .faq dt { font-weight: 700; color: var(--brand); font-size: 18px; margin-top: 24px; }
+  .faq dt:first-child { margin-top: 0; }
+  .faq dd { margin: 6px 0 0; color: var(--muted); }
 
-    @media (min-width: 720px) {
-      .plans {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
+  /* Contact */
+  .contact-box { max-width: 680px; }
+  .contact-mail {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 20px;
+    font-weight: 600;
+    word-break: break-all;
+  }
 
-    .plan {
-      background: #ffffff;
-      border: 1px solid #e4e7eb;
-      border-radius: 12px;
-      padding: 24px;
-    }
+  /* Footer */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .site-footer p { margin: 0; }
 
-    .plan.featured {
-      border: 2px solid #2563eb;
-    }
-
-    .plan h2 {
-      margin: 0 0 8px;
-      font-size: 1.25rem;
-    }
-
-    .badge {
-      display: inline-block;
-      margin-left: 8px;
-      padding: 2px 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #ffffff;
-      background: #2563eb;
-      border-radius: 999px;
-      vertical-align: middle;
-    }
-
-    .price {
-      margin: 0 0 16px;
-      font-size: 2rem;
-      font-weight: 700;
-    }
-
-    .price span {
-      font-size: 1rem;
-      font-weight: 400;
-      color: #52606d;
-    }
-
-    .plan ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .plan li {
-      padding: 8px 0;
-      border-top: 1px solid #e4e7eb;
-    }
-
-    .plan li::before {
-      content: "✓ ";
-      color: #2563eb;
-      font-weight: 700;
-    }
-
-    footer {
-      margin-top: 32px;
-      text-align: center;
-      font-size: 0.875rem;
-      color: #7b8794;
-    }
-  </style>
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    section { padding: 52px 0; }
+    .hero { padding: 64px 0 56px; }
+    .hero p { font-size: 17px; }
+    .nav a { padding: 0 8px; }
+    /* Extra specificity: the pricing <style> inside the section comes later in the page */
+    #pricing .price-grid .price-card .incl { font-size: 16px; }
+    #pricing .price-grid .price-card .btn { font-size: 16px; }
+    #pricing .price-grid .price-card .badge { font-size: 14px; }
+  }
+</style>
 </head>
 <body>
-  <main>
-    <header>
-      <h1>Hello, pricing!</h1>
-      <p class="author">Augustin Nguyen</p>
-      <p class="intro">Plans for <strong>TaskNest</strong>, a fictional to-do and planning app.</p>
-    </header>
 
-    <section class="plans" aria-label="Pricing plans">
-      <article class="plan">
-        <h2>Free</h2>
-        <p class="price">€0 <span>/ month</span></p>
-        <ul>
-          <li>Up to 3 projects</li>
-          <li>Basic task lists</li>
-          <li>Mobile app access</li>
-        </ul>
-      </article>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="#top">GameKey Balkan</a>
+    <nav class="nav" aria-label="Main menu">
+      <ul>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-      <article class="plan featured">
-        <h2>Basic <span class="badge">Popular</span></h2>
-        <p class="price">€5 <span>/ month</span></p>
-        <ul>
-          <li>Unlimited projects</li>
-          <li>Reminders and due dates</li>
-          <li>Email support</li>
-        </ul>
-      </article>
+<main id="top">
 
-      <article class="plan">
-        <h2>Pro</h2>
-        <p class="price">€12 <span>/ month</span></p>
-        <ul>
-          <li>Everything in Basic</li>
-          <li>Team sharing (up to 10 users)</li>
-          <li>Priority support</li>
-        </ul>
-      </article>
-    </section>
+  <section class="hero" id="hero">
+    <div class="container">
+      <h1>Ashen Tide II arrives in March 2027 – be ready on release day</h1>
+      <p>Authorised activation keys for PC games, sold to electronics shops and web shops in Croatia, Serbia, Bosnia and Herzegovina, Montenegro and North Macedonia.</p>
+      <a class="btn" href="#pricing">See pricing</a>
+    </div>
+  </section>
 
-    <footer>
-      TaskNest is a fictional app made for a class project.
-    </footer>
-  </main>
+  <section id="benefits">
+    <div class="container">
+      <h2>Benefits</h2>
+      <p class="section-intro">GameKey Balkan is a distributor from Zagreb and the authorised partner of three mid-size PC game publishers for Croatia and four non-EU neighbours.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Authorised keys</h3>
+          <p>Authorised keys from three publishers, delivered with payment and fraud checks.</p>
+        </div>
+        <div class="card">
+          <h3>Ashen Tide II launch campaign</h3>
+          <p>A €40,000 launch campaign for Ashen Tide II, coming in March 2027, that brings players to your shop.</p>
+        </div>
+        <div class="card">
+          <h3>Region-locked keys</h3>
+          <p>Region-locked keys that protect your sales from cheap grey-market keys.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="container">
+      <h2>How it works</h2>
+      <p class="section-intro">Three simple steps from order to sale.</p>
+      <ol class="steps grid">
+        <li class="card"><h3>Order</h3><p>Order keys for your region from GameKey.</p></li>
+        <li class="card"><h3>Receive</h3><p>Receive the activation codes after payment and fraud checks.</p></li>
+        <li class="card"><h3>Sell</h3><p>Sell them as cards or online at your own price.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="container">
+      <h2>Pricing</h2>
+      <style>
+        #pricing .price-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+        #pricing .price-card { position: relative; display: flex; flex-direction: column; padding: 24px 20px; }
+        #pricing .price-card h3 { font-size: 18px; margin-bottom: 12px; }
+        #pricing .price { font-size: 30px; font-weight: 700; color: var(--text); line-height: 1.2; margin: 0; }
+        #pricing .price-unit { font-size: 14px; color: var(--muted); margin: 2px 0 14px; }
+        #pricing .price-card .for { font-weight: 600; color: var(--text); margin-bottom: 8px; }
+        #pricing .price-card .incl { font-size: 15px; margin-bottom: 20px; }
+        #pricing .price-card .btn { margin-top: auto; width: 100%; min-height: 48px; padding: 10px 14px; font-size: 15px; text-align: center; line-height: 1.3; }
+        #pricing .price-card.recommended { border: 2px solid var(--brand); box-shadow: 0 6px 18px rgba(15, 76, 92, 0.15); }
+        #pricing .badge { position: absolute; top: -12px; left: 20px; background: var(--brand); color: #fff; font-size: 13px; font-weight: 700; padding: 2px 10px; border-radius: 999px; }
+        #pricing .price-notes { font-size: 14px; color: var(--muted); margin: 24px 0 0; }
+        @media (max-width: 960px) { #pricing .price-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 600px) { #pricing .price-grid { grid-template-columns: 1fr; } }
+      </style>
+      <p class="section-intro">Ashen Tide II at the right price for every player – from release day to the sales – with keys locked to their region so your shop never competes with grey-market keys.</p>
+      <div class="price-grid">
+        <div class="card price-card recommended">
+          <span class="badge">Recommended</span>
+          <h3>Croatia · Launch (March–May 2027)</h3>
+          <p class="price">€40.79</p>
+          <p class="price-unit">per key, excl. VAT</p>
+          <p class="for">For shops serving fans who play at release</p>
+          <p class="incl">Recommended retail price €59.99 incl. 25% VAT; keys activate in all EU/EEA countries</p>
+          <a class="btn" href="#contact">Choose Croatia · Launch (March–May 2027)</a>
+        </div>
+        <div class="card price-card">
+          <h3>Croatia · Year 1 (June 2027–February 2028)</h3>
+          <p class="price">€30.59</p>
+          <p class="price-unit">per key, excl. VAT</p>
+          <p class="for">For shops serving regular players</p>
+          <p class="incl">Recommended retail price €44.99 incl. 25% VAT; keys activate in all EU/EEA countries</p>
+          <a class="btn" href="#contact">Choose Croatia · Year 1 (June 2027–February 2028)</a>
+        </div>
+        <div class="card price-card">
+          <h3>Croatia · Year 2 (from March 2028)</h3>
+          <p class="price">€20.39</p>
+          <p class="price-unit">per key, excl. VAT</p>
+          <p class="for">For shops serving casual players</p>
+          <p class="incl">Recommended retail price €29.99 incl. 25% VAT; keys activate in all EU/EEA countries</p>
+          <a class="btn" href="#contact">Choose Croatia · Year 2 (from March 2028)</a>
+        </div>
+        <div class="card price-card">
+          <h3>Croatia · Sale (2–3-week sales from September 2028)</h3>
+          <p class="price">€13.59</p>
+          <p class="price-unit">per key, excl. VAT</p>
+          <p class="for">For shops serving bargain hunters</p>
+          <p class="incl">Recommended retail price €19.99 incl. 25% VAT; only for keys ordered during the sale</p>
+          <a class="btn" href="#contact">Choose Croatia · Sale (2–3-week sales from September 2028)</a>
+        </div>
+        <div class="card price-card">
+          <h3>Non-EU · Launch (March–May 2027)</h3>
+          <p class="price">€28.33</p>
+          <p class="price-unit">per key, excl. VAT</p>
+          <p class="for">For shops serving fans who play at release</p>
+          <p class="incl">Recommended retail price €39.99 incl. 20% VAT; keys activate only in Serbia, Bosnia and Herzegovina, Montenegro and North Macedonia</p>
+          <a class="btn" href="#contact">Choose Non-EU · Launch (March–May 2027)</a>
+        </div>
+        <div class="card price-card">
+          <h3>Non-EU · Year 1 (June 2027–February 2028)</h3>
+          <p class="price">€21.24</p>
+          <p class="price-unit">per key, excl. VAT</p>
+          <p class="for">For shops serving regular players</p>
+          <p class="incl">Recommended retail price €29.99 incl. 20% VAT; keys activate only in the four non-EU countries</p>
+          <a class="btn" href="#contact">Choose Non-EU · Year 1 (June 2027–February 2028)</a>
+        </div>
+        <div class="card price-card">
+          <h3>Non-EU · Year 2 (from March 2028)</h3>
+          <p class="price">€14.16</p>
+          <p class="price-unit">per key, excl. VAT</p>
+          <p class="for">For shops serving casual players</p>
+          <p class="incl">Recommended retail price €19.99 incl. 20% VAT; keys activate only in the four non-EU countries</p>
+          <a class="btn" href="#contact">Choose Non-EU · Year 2 (from March 2028)</a>
+        </div>
+        <div class="card price-card">
+          <h3>Non-EU · Sale (2–3-week sales from September 2028)</h3>
+          <p class="price">€8.49</p>
+          <p class="price-unit">per key, excl. VAT</p>
+          <p class="for">For shops serving bargain hunters</p>
+          <p class="incl">Recommended retail price €11.99 incl. 20% VAT; only for keys ordered during the sale</p>
+          <a class="btn" href="#contact">Choose Non-EU · Sale (2–3-week sales from September 2028)</a>
+        </div>
+      </div>
+      <p class="price-notes">Same price per key for every shop, no volume discounts · Retail prices are recommendations only – each shop sets its own price · Sale prices apply only to keys ordered during the sale window, up to the shop's average monthly orders · At least 30 days at the regular price between two sales · Invoiced in euros · Prices to shops exclude VAT; recommended retail prices include VAT (Croatia 25%; non-EU countries calculated with 20%, local VAT applies).</p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <h2>FAQ</h2>
+      <dl class="faq">
+        <dt>Can we set our own retail prices?</dt>
+        <dd>Yes. Our retail prices are recommendations only. Every shop and web shop sets its own price.</dd>
+        <dt>Where do the keys work?</dt>
+        <dd>Croatian keys activate in all EU/EEA countries. Non-EU keys activate only in Serbia, Bosnia and Herzegovina, Montenegro and North Macedonia, which protects your sales from cheap grey-market keys.</dd>
+        <dt>Will the price change after release?</dt>
+        <dd>Yes, on a fixed schedule: launch prices from March to May 2027, lower prices from June 2027 and from March 2028, and short sales from September 2028. Each sale price is a real reduction from the price of the previous 30 days.</dd>
+        <dt>Do you offer volume discounts?</dt>
+        <dd>No. Every shop pays the same price per key. Sale prices apply only to keys ordered during a sale, up to the shop's average monthly orders.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact-box">
+      <h2>Contact</h2>
+      <p>Electronics shop or web shop in our region? Write to us to become a partner.</p>
+      <a class="contact-mail" href="mailto:partners@gamekey-balkan.example">partners@gamekey-balkan.example</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2026 GameKey Balkan – student project, fictitious company</p>
+  </div>
+</footer>
+
 </body>
 </html>
